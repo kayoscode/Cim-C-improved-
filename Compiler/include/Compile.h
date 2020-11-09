@@ -73,6 +73,12 @@ struct GrammarTree{
         localTypes.emplace(typeName, type);
     }
 
+    void getType(const char* name, Type& type) {
+    }
+
+    void getIdentifier(const char* identifier, int& idt) {
+    }
+
     void printText();
     void print(int depth = 0);
 
@@ -81,8 +87,11 @@ struct GrammarTree{
     Token* nodeEnd;
     char tmp;
 
-    std::unordered_map<std::string, Type> localTypes;
+    std::map<std::string, Type> localTypes;
     std::map<std::string, int> localIdentifiers;
+    std::map<std::string, GrammarTree*> identifierParent;
+    std::map<std::string, GrammarTree*> typeParent;
+
     GrammarTree* parent = nullptr;
     std::vector<GrammarTree*> subNodes;
 };

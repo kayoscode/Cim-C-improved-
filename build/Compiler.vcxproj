@@ -316,8 +316,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\include\Binary.h" />
     <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\include\Compile.h" />
     <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\include\defs.h" />
+    <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\src\Binary.cpp" />
     <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\src\Compile.cpp" />
     <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\src\defs.cpp" />
     <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\src\main.cpp" />
