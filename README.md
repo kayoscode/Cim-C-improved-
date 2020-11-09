@@ -61,7 +61,7 @@ The following are directives:
 <br> There are either categories each with their own expected arguments: AL, SA, FPA, FPS, MEM, INT, STACK, JMP
 <br>
 These are the instructions as listed in the code: "Encode.h"
-//NOTE: THESE NEED TO BE IN THE EXACT SAME ORDER AS THE STRINGS DEFINED IN defs.cpp because it uses their index in the list as the opcode number
+//NOTE: THESE NEED TO BE IN THE EXACT SAME ORDER AS THE STRINGS DEFINED IN defs.cpp because it uses their index in the list as the opcode number <br>
 <code>
 enum class ALOps {
 	LSL, LSR,
@@ -138,5 +138,5 @@ la r0, label -> loads the relative address of a label into r0 <br>
 div r0, r0, r1 -> stores the result of r0/r1 and stores the remainder in r15. Divide by zero doesn't trigger an exception.
 </ol>
 
-As the compiler is currenly not funcitonal, outside of parsing the language into a tree, I don't have any further details as of now. I will update this README as I update the code. <br>
+As the compiler is currenly not functional, outside of parsing the language into a tree, I don't have any further details as of now. I will update this README as I update the code. <br>
 Feel free to reach out to me if you'd like to contribute.
