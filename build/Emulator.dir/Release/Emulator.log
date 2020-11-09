@@ -1,0 +1,8 @@
+﻿  Building Custom Rule C:/Users/Bryce/Documents/CPUEmulator/CMakeLists.txt
+  Logger.cpp
+  Cpu.cpp
+C:\Users\Bryce\Documents\CPUEmulator\src\Cpu.cpp(434,57): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  defs.cpp
+  main.cpp
+  Generating Code...
+LINK : fatal error LNK1181: cannot open input file 'Logger\Release\bylog.lib'

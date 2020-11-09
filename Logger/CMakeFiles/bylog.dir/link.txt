@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbylog.a  CMakeFiles/bylog.dir/Logger.cpp.o
+/usr/bin/ranlib libbylog.a
