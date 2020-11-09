@@ -140,3 +140,13 @@ div r0, r0, r1 -> stores the result of r0/r1 and stores the remainder in r15. Di
 
 As the compiler is currenly not functional, outside of parsing the language into a tree, I don't have any further details as of now. I will update this README as I update the code. <br>
 Feel free to reach out to me if you'd like to contribute.
+
+Installation: Dependencies: CMake<br>
+<ol>
+	<li>Navigate to root directory and delete the build directory if it exists</li>
+	<li><code>mkdir build</code></li>
+	<li><code>cd build</code></li>
+	<li><code>cmake ..</code></li>
+	<li><code>cmake --build .</code></li>
+</ol>
+Go into the build directory and into debug or release. Create an asm file or a cim file and load it into the compiler / assembler and it will output a binary block. That code can be run as bytecode in the Emulator.
