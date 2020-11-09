@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{45954113-37E2-3B66-B044-157C69F7122D}</ProjectGuid>
+    <ProjectGuid>{BEA7835D-3303-373F-9DD1-2831CB0A159E}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
@@ -59,25 +59,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bryce\Documents\CPUEmulator\build\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bryce\Documents\Cim-C-improved-\build\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Emulator.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Emulator</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Bryce\Documents\CPUEmulator\build\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Bryce\Documents\Cim-C-improved-\build\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Emulator.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Emulator</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Bryce\Documents\CPUEmulator\build\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Bryce\Documents\Cim-C-improved-\build\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Emulator.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Emulator</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Bryce\Documents\CPUEmulator\build\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Bryce\Documents\Cim-C-improved-\build\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Emulator.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Emulator</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -103,10 +103,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -119,8 +119,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Bryce/Documents/CPUEmulator/build/Debug/Emulator.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Bryce/Documents/CPUEmulator/build/Debug/Emulator.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/Bryce/Documents/Cim-C-improved-/build/Debug/Emulator.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Bryce/Documents/Cim-C-improved-/build/Debug/Emulator.pdb</ProgramDataBaseFile>
       <StackReserveSize>50000000</StackReserveSize>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -130,7 +130,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -147,10 +147,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -163,8 +163,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Bryce/Documents/CPUEmulator/build/Release/Emulator.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Bryce/Documents/CPUEmulator/build/Release/Emulator.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/Bryce/Documents/Cim-C-improved-/build/Release/Emulator.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Bryce/Documents/Cim-C-improved-/build/Release/Emulator.pdb</ProgramDataBaseFile>
       <StackReserveSize>50000000</StackReserveSize>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -174,7 +174,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -191,10 +191,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -207,8 +207,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Bryce/Documents/CPUEmulator/build/MinSizeRel/Emulator.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Bryce/Documents/CPUEmulator/build/MinSizeRel/Emulator.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/Bryce/Documents/Cim-C-improved-/build/MinSizeRel/Emulator.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Bryce/Documents/Cim-C-improved-/build/MinSizeRel/Emulator.pdb</ProgramDataBaseFile>
       <StackReserveSize>50000000</StackReserveSize>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -218,7 +218,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -234,10 +234,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\CPUEmulator\.\include;C:\Users\Bryce\Documents\CPUEmulator\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Bryce\Documents\Cim-C-improved-\.\include;C:\Users\Bryce\Documents\Cim-C-improved-\Assembler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -250,8 +250,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/Bryce/Documents/CPUEmulator/build/RelWithDebInfo/Emulator.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/Bryce/Documents/CPUEmulator/build/RelWithDebInfo/Emulator.pdb</ProgramDataBaseFile>
+      <ImportLibrary>C:/Users/Bryce/Documents/Cim-C-improved-/build/RelWithDebInfo/Emulator.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Bryce/Documents/Cim-C-improved-/build/RelWithDebInfo/Emulator.pdb</ProgramDataBaseFile>
       <StackReserveSize>50000000</StackReserveSize>
       <SubSystem>Console</SubSystem>
     </Link>
@@ -260,10 +260,10 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Bryce\Documents\CPUEmulator\CMakeLists.txt">
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Bryce/Documents/CPUEmulator/CMakeLists.txt</Message>
+    <CustomBuild Include="C:\Users\Bryce\Documents\Cim-C-improved-\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Bryce/Documents/Cim-C-improved-/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bryce/Documents/CPUEmulator -BC:/Users/Bryce/Documents/CPUEmulator/build --check-stamp-file C:/Users/Bryce/Documents/CPUEmulator/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bryce/Documents/Cim-C-improved- -BC:/Users/Bryce/Documents/Cim-C-improved-/build --check-stamp-file C:/Users/Bryce/Documents/Cim-C-improved-/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -271,12 +271,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeCCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeCXXCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeRCCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeCCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeCXXCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeRCCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Bryce/Documents/CPUEmulator/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Bryce/Documents/Cim-C-improved-/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bryce/Documents/CPUEmulator -BC:/Users/Bryce/Documents/CPUEmulator/build --check-stamp-file C:/Users/Bryce/Documents/CPUEmulator/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bryce/Documents/Cim-C-improved- -BC:/Users/Bryce/Documents/Cim-C-improved-/build --check-stamp-file C:/Users/Bryce/Documents/Cim-C-improved-/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -284,12 +284,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeCCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeCXXCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeRCCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeCCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeCXXCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeRCCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Bryce/Documents/CPUEmulator/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Bryce/Documents/Cim-C-improved-/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bryce/Documents/CPUEmulator -BC:/Users/Bryce/Documents/CPUEmulator/build --check-stamp-file C:/Users/Bryce/Documents/CPUEmulator/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bryce/Documents/Cim-C-improved- -BC:/Users/Bryce/Documents/Cim-C-improved-/build --check-stamp-file C:/Users/Bryce/Documents/Cim-C-improved-/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -297,12 +297,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeCCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeCXXCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeRCCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeCCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeCXXCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeRCCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Bryce/Documents/CPUEmulator/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Bryce/Documents/Cim-C-improved-/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bryce/Documents/CPUEmulator -BC:/Users/Bryce/Documents/CPUEmulator/build --check-stamp-file C:/Users/Bryce/Documents/CPUEmulator/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bryce/Documents/Cim-C-improved- -BC:/Users/Bryce/Documents/Cim-C-improved-/build --check-stamp-file C:/Users/Bryce/Documents/Cim-C-improved-/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -310,32 +310,32 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeCCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeCXXCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeRCCompiler.cmake;C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\3.18.0-rc2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.18\Modules\Platform\WindowsPaths.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeCCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeCXXCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeRCCompiler.cmake;C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\3.18.0-rc2\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Bryce\Documents\CPUEmulator\Logger.cpp" />
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\Cpu.h" />
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\Encode.h" />
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\Logger.h" />
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\Memory.h" />
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\Register.h" />
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\defs.h" />
-    <ClCompile Include="C:\Users\Bryce\Documents\CPUEmulator\src\Cpu.cpp" />
-    <ClCompile Include="C:\Users\Bryce\Documents\CPUEmulator\src\defs.cpp" />
-    <ClCompile Include="C:\Users\Bryce\Documents\CPUEmulator\src\main.cpp" />
+    <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\Logger.cpp" />
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\Cpu.h" />
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\Encode.h" />
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\Logger.h" />
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\Memory.h" />
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\Register.h" />
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\defs.h" />
+    <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\src\Cpu.cpp" />
+    <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\src\defs.cpp" />
+    <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\Bryce\Documents\CPUEmulator\build\ZERO_CHECK.vcxproj">
-      <Project>{08EF5947-EDD7-320E-B7A8-6A3B00400C72}</Project>
+    <ProjectReference Include="C:\Users\Bryce\Documents\Cim-C-improved-\build\ZERO_CHECK.vcxproj">
+      <Project>{1A7F1F81-9436-3492-BC44-CE331DAF0A61}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\Bryce\Documents\CPUEmulator\build\Logger\bylog.vcxproj">
-      <Project>{4DB832B2-F625-3238-AD9F-A119F550A63A}</Project>
+    <ProjectReference Include="C:\Users\Bryce\Documents\Cim-C-improved-\build\Logger\bylog.vcxproj">
+      <Project>{79306FBF-A420-363D-B050-976CEC099156}</Project>
       <Name>bylog</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Bryce\Documents\CPUEmulator\build\CMakeFiles\50ae31b106662b6dc51e8234556de480\generate.stamp.rule">
+    <CustomBuild Include="C:\Users\Bryce\Documents\Cim-C-improved-\build\CMakeFiles\8a3fb952186b90b04651ac66e5ece5e8\generate.stamp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{1756145C-0FD8-3F19-8D6F-0914C2AE4307}</UniqueIdentifier>
+      <UniqueIdentifier>{4590C3CE-1852-35A0-94DD-E33443730C74}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

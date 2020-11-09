@@ -1,48 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Bryce\Documents\CPUEmulator\Logger.cpp">
+    <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bryce\Documents\CPUEmulator\src\Cpu.cpp">
+    <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\src\Cpu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bryce\Documents\CPUEmulator\src\defs.cpp">
+    <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\src\defs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Bryce\Documents\CPUEmulator\src\main.cpp">
+    <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\Cpu.h">
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\Cpu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\Encode.h">
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\Encode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\Logger.h">
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\Logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\Memory.h">
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\Memory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\Register.h">
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\Register.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Bryce\Documents\CPUEmulator\include\defs.h">
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\include\defs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Bryce\Documents\CPUEmulator\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Bryce\Documents\Cim-C-improved-\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{4409F254-1E1A-358F-8467-9BB8CF519821}</UniqueIdentifier>
+      <UniqueIdentifier>{60E1FD56-F401-3B81-8F20-622B78ABC463}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{52C498EA-905D-3069-A418-D22B22851F8E}</UniqueIdentifier>
+      <UniqueIdentifier>{D963CE38-1F83-3ED8-A34D-C9E1D849253D}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

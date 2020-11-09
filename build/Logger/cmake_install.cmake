@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Bryce/Documents/CPUEmulator/Logger
+# Install script for directory: C:/Users/Bryce/Documents/Cim-C-improved-/Logger
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

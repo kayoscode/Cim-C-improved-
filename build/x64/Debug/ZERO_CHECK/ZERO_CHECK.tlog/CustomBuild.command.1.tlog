@@ -1,6 +1,6 @@
-^C:\USERS\BRYCE\DOCUMENTS\CPUEMULATOR\BUILD\CMAKEFILES\50AE31B106662B6DC51E8234556DE480\GENERATE.STAMP.RULE
+^C:\USERS\BRYCE\DOCUMENTS\CIM-C-IMPROVED-\BUILD\CMAKEFILES\8A3FB952186B90B04651AC66E5ECE5E8\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bryce/Documents/CPUEmulator -BC:/Users/Bryce/Documents/CPUEmulator/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Bryce/Documents/CPUEmulator/build/Emulator.sln
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bryce/Documents/Cim-C-improved- -BC:/Users/Bryce/Documents/Cim-C-improved-/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Bryce/Documents/Cim-C-improved-/build/Emulator.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

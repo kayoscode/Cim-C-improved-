@@ -1,4 +1,0 @@
-﻿bylog.lib(Logger.obj) : error LNK2038: mismatch detected for '_ITERATOR_DEBUG_LEVEL': value '0' doesn't match value '2' in Logger.obj
-bylog.lib(Logger.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MD_DynamicRelease' doesn't match value 'MDd_DynamicDebug' in Logger.obj
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-C:\Users\Bryce\Documents\CPUEmulator\build\Debug\Emulator.exe : fatal error LNK1319: 2 mismatches detected

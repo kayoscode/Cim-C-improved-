@@ -4,7 +4,7 @@
 #define DEBUG
 //#define DEBUG_MEMORY
 //#define DEBUG_REGISTERS
-//#define DEBUG_INSTRUCTIONS
+#define DEBUG_INSTRUCTIONS
 
 #include <stdint.h>
 

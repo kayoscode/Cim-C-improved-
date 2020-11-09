@@ -1,7 +1,7 @@
-C:/Users/Bryce/Documents/CPUEmulator/build/CMakeFiles/Emulator.dir
-C:/Users/Bryce/Documents/CPUEmulator/build/CMakeFiles/Assembler.dir
-C:/Users/Bryce/Documents/CPUEmulator/build/CMakeFiles/Compiler.dir
-C:/Users/Bryce/Documents/CPUEmulator/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Bryce/Documents/CPUEmulator/build/CMakeFiles/ZERO_CHECK.dir
-C:/Users/Bryce/Documents/CPUEmulator/build/Logger/CMakeFiles/bylog.dir
-C:/Users/Bryce/Documents/CPUEmulator/build/Logger/CMakeFiles/ALL_BUILD.dir
+C:/Users/Bryce/Documents/Cim-C-improved-/build/CMakeFiles/Emulator.dir
+C:/Users/Bryce/Documents/Cim-C-improved-/build/CMakeFiles/Assembler.dir
+C:/Users/Bryce/Documents/Cim-C-improved-/build/CMakeFiles/Compiler.dir
+C:/Users/Bryce/Documents/Cim-C-improved-/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Bryce/Documents/Cim-C-improved-/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Bryce/Documents/Cim-C-improved-/build/Logger/CMakeFiles/bylog.dir
+C:/Users/Bryce/Documents/Cim-C-improved-/build/Logger/CMakeFiles/ALL_BUILD.dir
