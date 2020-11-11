@@ -27,7 +27,7 @@ const char* modifiers[] {
 };
 
 const char* types[] {
-    "float", "long", "int", "short", "auto", "char", "register", "void", "bool"
+    "double", "float", "long", "int", "short", "auto", "char", "register", "void", "bool"
 };
 
 const char* constructs[] {

@@ -1,25 +1,8 @@
-
-int main(int argv, const char** argv) {
-	fizzBuzz(100);
-}
-
-void fizzBuzz(int c) {
-	for(int i = 0; i <= c; i++) {
-		if(i % 15 == 0) print("fizzbuzz\n");
-		else if(i % 5 == 0) print("buzz");
-		else if(i % 3 == 0) print("fizz");
-	}
-}
-
-class arithmetic {
-	public static int add(int a, int b) return a + b;
-	public static int sub(int a, int b) return a - b;
-	public static int mul(int a, int b) return a * b;
-	public static int div(int a, int b, int* remainder) {
-		*remainder = a % b;
-		return a / b;
+int main() {
+	int a = 12;
+	void function() {
 	}
 	
-	struct structThatCanOnlyBeAccessedByClassMaybeThatWillChange {
+	void function2() {
 	}
 }

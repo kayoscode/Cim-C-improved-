@@ -65,8 +65,8 @@ const char* grammarNodeNames[] {
     "STRUCTURE_DEFINITION", "STRUCTURE", "STRUCT", "CLASS"
 };
 
-std::unordered_map<const char*, int> defaultTypes {
-    {"float", {FLOAT_SIZE}}, {"long", {LONG_SIZE}}, {"int", {INT_SIZE}},
+std::map<const char*, int> defaultTypes {
+    {"double", {DOUBLE_SIZE}}, {"float", {FLOAT_SIZE}}, {"long", {LONG_SIZE}}, {"int", {INT_SIZE}},
     {"short", {SHORT_SIZE}}, {"char", {CHAR_SIZE}},
     {"register", {REGISTER_SIZE}}, {"void", {VOID_SIZE}}, {"bool", {BOOL_SIZE}}
 };
@@ -82,6 +82,7 @@ static bool isLValue(Token* tokens, uint32_t& index, GrammarTree* tree);
 static bool isExpression(Token* tokens, uint32_t& index, GrammarTree* tree);
 static bool isFunctionOperands(Token* tokens, uint32_t& index, GrammarTree* tree);
 static bool isStructure(Token* tokens, uint32_t& index, GrammarTree* tree);
+static bool isDeclaration(Token* tokens, uint32_t& index, GrammarTree* tree);
 
 void printToken(Token& token) {
     char tmp = *(token.end);
@@ -324,7 +325,7 @@ bool generateTokenStream(char* file, size_t size, Token* tokenStream) {
 
 static bool isEOF(Token* tokens, uint32_t& index, GrammarTree* tree) {
     if(tokens[index].type == (int)TokenTypes::ENDOFFILE) {
-        GrammarTree* newNode = new GrammarTree(TERMINAL, &tokens[index]);
+        GrammarTree* newNode = new GrammarTree(TERMINAL, &tokens[index], tree);
         tree->addSubNode(newNode);
         index++;
         return true;
@@ -334,14 +335,14 @@ static bool isEOF(Token* tokens, uint32_t& index, GrammarTree* tree) {
 }
 
 static void addTerminalToTree(Token* tokens, uint32_t& index, GrammarTree* tree) {
-    GrammarTree* newNode = new GrammarTree(TERMINAL, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(TERMINAL, &tokens[index], tree);
     tree->addSubNode(newNode);
     index++;
 }
 
 static bool isTerminal(Token* tokens, uint32_t& index, const char* terminal, GrammarTree* tree, int len = 1) {
     if(sequals(tokens[index].start, terminal, len)) {
-        GrammarTree* newNode = new GrammarTree(TERMINAL, &tokens[index]);
+        GrammarTree* newNode = new GrammarTree(TERMINAL, &tokens[index], tree);
         tree->addSubNode(newNode);
         index++;
         return true;
@@ -352,7 +353,7 @@ static bool isTerminal(Token* tokens, uint32_t& index, const char* terminal, Gra
 
 static bool isPointerType(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(POINTER_TYPE, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(POINTER_TYPE, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::OPERATOR && tokens[index].subType == (int)Operators::MUL_DERF) {
         addTerminalToTree(tokens, index, newNode);
@@ -368,7 +369,7 @@ static bool isPointerType(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isArrayType(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(ARRAY_TYPE, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(ARRAY_TYPE, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::OBRACK) {
         addTerminalToTree(tokens, index, newNode);
@@ -388,7 +389,7 @@ static bool isArrayType(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isFunctionPointerType(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_PTR_TYPE, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_PTR_TYPE, &tokens[index], tree);
 
     if(isFunctionDecOperands(tokens, index, newNode)) {
         isFunctionPointerType(tokens, index, newNode);
@@ -403,7 +404,7 @@ static bool isFunctionPointerType(Token* tokens, uint32_t& index, GrammarTree* t
 
 static bool isType(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(TYPE, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(TYPE, &tokens[index], tree);
 
     //it actually doesn't need to have anything here, int is assumed
     if(isModifierList(tokens, index, newNode)) {
@@ -428,7 +429,7 @@ static bool isType(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isModifier(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(MODIFIER, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(MODIFIER, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::MODIFIER) {
         addTerminalToTree(tokens, index, newNode);
@@ -443,7 +444,7 @@ static bool isModifier(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isModifierList(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(MODIFIER_LIST, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(MODIFIER_LIST, &tokens[index], tree);
 
     if(isModifier(tokens, index, newNode)) {
         isModifierList(tokens, index, newNode);
@@ -455,7 +456,7 @@ static bool isModifierList(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isFunctionCallArg(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_CALL_ARGS, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_CALL_ARGS, &tokens[index], tree);
 
     if(isExpression(tokens, index, newNode)) {
         tree->addSubNode(newNode);
@@ -469,7 +470,7 @@ static bool isFunctionCallArg(Token* tokens, uint32_t& index, GrammarTree* tree)
 
 static bool isFunctionCallArgList(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_CALL_ARGS, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_CALL_ARGS, &tokens[index], tree);
 
     if(isFunctionCallArg(tokens, index, newNode)) {
         if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::COMMA) {
@@ -492,7 +493,7 @@ static bool isFunctionCallArgList(Token* tokens, uint32_t& index, GrammarTree* t
 
 static bool isFunctionCallArgs(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_CALL_ARGS, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_CALL_ARGS, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::OPARN) {
         addTerminalToTree(tokens, index, newNode);
@@ -511,7 +512,7 @@ static bool isFunctionCallArgs(Token* tokens, uint32_t& index, GrammarTree* tree
 
 static bool isFunctionCall(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_CALL, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_CALL, &tokens[index], tree);
 
     if(isLValue(tokens, index, newNode) && isFunctionCallArgs(tokens, index, newNode)) {
         tree->addSubNode(newNode);
@@ -525,7 +526,7 @@ static bool isFunctionCall(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isPrefixOperator(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(PREFIX_OPERATOR, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(PREFIX_OPERATOR, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::OPERATOR) {
         if(tokens[index].subType == (int)Operators::DECREMENT || tokens[index].subType == (int)Operators::INCREMENT || 
@@ -545,7 +546,7 @@ static bool isPrefixOperator(Token* tokens, uint32_t& index, GrammarTree* tree) 
 
 static bool isPostfixOperator(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(PREFIX_OPERATOR, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(PREFIX_OPERATOR, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::OPERATOR) {
         if(tokens[index].subType == (int)Operators::DECREMENT || tokens[index].subType == (int)Operators::INCREMENT) {
@@ -562,7 +563,7 @@ static bool isPostfixOperator(Token* tokens, uint32_t& index, GrammarTree* tree)
 
 static bool isExpression(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(EXPRESSION, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(EXPRESSION, &tokens[index], tree);
     bool valid = false;
 
     if(isPrefixOperator(tokens, index, newNode)) {
@@ -614,11 +615,17 @@ static bool isExpression(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isLValue(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(LVALUE, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(LVALUE, &tokens[index], tree);
 
-    if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].type == (int)Punctuators::OPARN) {
+    if(tokens[index].type == (int)TokenTypes::OPERATOR && tokens[index].subType == (int)Operators::MUL_DERF) {
+        addTerminalToTree(tokens, index, newNode);
+        return isLValue(tokens, index, newNode);
+    }
+    if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::OPARN) {
+        addTerminalToTree(tokens, index, newNode);
         if(isLValue(tokens, index, newNode)) {
-            if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].type == (int)Punctuators::CPARN) {
+            if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::CPARN) {
+                addTerminalToTree(tokens, index, newNode);
                 return true;
             }
         }
@@ -636,16 +643,14 @@ static bool isLValue(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isInitialization(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(INTIALIZATION, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(INTIALIZATION, &tokens[index], tree);
 
-    if(isType(tokens, index, newNode)) {
-        if(isLValue(tokens, index, newNode)) {
-            if(tokens[index].type == (int)TokenTypes::OPERATOR && tokens[index].subType == (int)Operators::EQ) {
-                addTerminalToTree(tokens, index, newNode);
-                if(isExpression(tokens, index, newNode)) {
-                    tree->addSubNode(newNode);
-                    return true;
-                }
+    if(isDeclaration(tokens, index, newNode)) {
+        if(tokens[index].type == (int)TokenTypes::OPERATOR && tokens[index].subType == (int)Operators::EQ) {
+            addTerminalToTree(tokens, index, newNode);
+            if(isExpression(tokens, index, newNode)) {
+                tree->addSubNode(newNode);
+                return true;
             }
         }
     }
@@ -657,13 +662,18 @@ static bool isInitialization(Token* tokens, uint32_t& index, GrammarTree* tree) 
 
 static bool isDeclaration(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(DECLARATION, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(DECLARATION, &tokens[index], tree);
 
     //check for variable declaration
     if(isType(tokens, index, newNode)) {
         if(tokens[index].type == (int)TokenTypes::IDENTIFIER) {
+            int nameIndex = index;
+            Identifier idt;
             addTerminalToTree(tokens, index, newNode);
+
             tree->addSubNode(newNode);
+            idt.idt = newNode;
+            tree->addIdentifier(&tokens[nameIndex], idt);
             return true;
         }
     }
@@ -675,12 +685,13 @@ static bool isDeclaration(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isTypedef(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(TYPEDEF, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(TYPEDEF, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::CONSTRUCT && tokens[index].subType == (int)Constructs::TYPEDEF) {
         addTerminalToTree(tokens, index, newNode);
         if(tokens[index].type == (int)TokenTypes::IDENTIFIER) {
             addTerminalToTree(tokens, index, newNode);
+            //Type type;
             if(isType(tokens, index, newNode)) {
                 tree->addSubNode(newNode);
                 return true;
@@ -695,7 +706,7 @@ static bool isTypedef(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isFunctionDecOperand(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_OPERAND, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_OPERAND, &tokens[index], tree);
 
     if(isType(tokens, index, newNode)) {
         if(tokens[index].type == (int)TokenTypes::IDENTIFIER) {
@@ -713,7 +724,7 @@ static bool isFunctionDecOperand(Token* tokens, uint32_t& index, GrammarTree* tr
 
 static bool isFunctionDecOperandList(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_ARG_LIST, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_ARG_LIST, &tokens[index], tree);
 
     if(isFunctionDecOperand(tokens, index, newNode)) {
         if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::COMMA) {
@@ -740,7 +751,7 @@ static bool isFunctionDecOperandList(Token* tokens, uint32_t& index, GrammarTree
 
 static bool isFunctionDecOperands(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_ARG_LIST, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_ARG_LIST, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::OPARN) {
         addTerminalToTree(tokens, index, newNode);
@@ -762,7 +773,7 @@ static bool isFunctionDeclaration(Token* tokens, uint32_t& index, GrammarTree* t
     return false;
 
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_DECLARATION, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_DECLARATION, &tokens[index], tree);
 
     if(isType(tokens, index, newNode)) {
         if(tokens[index].type == (int)TokenTypes::IDENTIFIER) {
@@ -781,7 +792,7 @@ static bool isFunctionDeclaration(Token* tokens, uint32_t& index, GrammarTree* t
 
 static bool isFunctionOperand(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_OPERAND, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_OPERAND, &tokens[index], tree);
 
     if(isType(tokens, index, newNode)) {
         if(tokens[index].type == (int)TokenTypes::IDENTIFIER) {
@@ -798,7 +809,7 @@ static bool isFunctionOperand(Token* tokens, uint32_t& index, GrammarTree* tree)
 
 static bool isFunctionOperandList(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_ARG_LIST, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_ARG_LIST, &tokens[index], tree);
 
     if(isFunctionOperand(tokens, index, newNode)) {
         if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::COMMA) {
@@ -825,7 +836,7 @@ static bool isFunctionOperandList(Token* tokens, uint32_t& index, GrammarTree* t
 
 static bool isFunctionOperands(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_ARG_LIST, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION_DEC_ARG_LIST, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::OPARN) {
         addTerminalToTree(tokens, index, newNode);
@@ -844,15 +855,20 @@ static bool isFunctionOperands(Token* tokens, uint32_t& index, GrammarTree* tree
 
 static bool isFunction(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FUNCTION, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FUNCTION, &tokens[index], tree);
+    int nameIndex = 0;
 
     if(isType(tokens, index, newNode)) {
         if(tokens[index].type == (int)TokenTypes::IDENTIFIER) {
+            nameIndex = index;
             addTerminalToTree(tokens, index, newNode);
 
             if(isFunctionOperands(tokens, index, newNode)) {
                 if(isCodeBlock(tokens, index, newNode) || isStatement(tokens, index, newNode)) {
                     tree->addSubNode(newNode);
+                    Identifier idt;
+                    idt.idt = newNode;
+                    newNode->addScopeIdentifier(&tokens[nameIndex], idt);
                     return true;
                 }
             }
@@ -866,7 +882,7 @@ static bool isFunction(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isLoopArg(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(SUB_STATEMENT, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(SUB_STATEMENT, &tokens[index], tree);
 
     if(isExpression(tokens, index, newNode) || isInitialization(tokens, index, newNode) || isDeclaration(tokens, index, newNode)) {
         tree->addSubNode(newNode);
@@ -880,7 +896,7 @@ static bool isLoopArg(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isCodeBlock(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(CODE_BLOCK, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(CODE_BLOCK, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::OBRACE) {
         addTerminalToTree(tokens, index, newNode);
@@ -900,7 +916,7 @@ static bool isCodeBlock(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isDoWhileLoop(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(DO_WHILE_LOOP, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(DO_WHILE_LOOP, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::CONSTRUCT && tokens[index].subType == (int)Constructs::DO) {
         addTerminalToTree(tokens, index, newNode);
@@ -928,7 +944,7 @@ static bool isDoWhileLoop(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isWhileLoop(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(WHILE_LOOP, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(WHILE_LOOP, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::CONSTRUCT && tokens[index].subType == (int)Constructs::WHILE) {
         addTerminalToTree(tokens, index, newNode);
@@ -953,7 +969,7 @@ static bool isWhileLoop(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isSubStatement(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(SUB_STATEMENT, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(SUB_STATEMENT, &tokens[index], tree);
 
     if(isLoopArg(tokens, index, newNode)) {
         if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::EOL) {
@@ -976,7 +992,7 @@ static bool isSubStatement(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isForLoop(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(FOR_LOOP, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(FOR_LOOP, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::CONSTRUCT && tokens[index].subType == (int)Constructs::FOR) {
         addTerminalToTree(tokens, index, newNode);
@@ -1008,7 +1024,7 @@ static bool isForLoop(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isLoop(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(LOOP, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(LOOP, &tokens[index], tree);
 
     if(isDoWhileLoop(tokens, index, newNode)) {
         if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::EOL) {
@@ -1029,7 +1045,7 @@ static bool isLoop(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isIf(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(IF_STATEMENT, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(IF_STATEMENT, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::CONSTRUCT && tokens[index].subType == (int)Constructs::IF) {
         addTerminalToTree(tokens, index, newNode);
@@ -1063,7 +1079,7 @@ static bool isIf(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isCase(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(CASE, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(CASE, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::CONSTRUCT && tokens[index].subType == (int)Constructs::CASE) {
         addTerminalToTree(tokens, index, newNode);
@@ -1085,7 +1101,7 @@ static bool isCase(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isCaseList(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(CASE_LIST, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(CASE_LIST, &tokens[index], tree);
 
     if(isCase(tokens, index, newNode)) {
         isCaseList(tokens, index, newNode);
@@ -1100,7 +1116,7 @@ static bool isCaseList(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isSwitchStatement(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(SWITCH_STATEMENT, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(SWITCH_STATEMENT, &tokens[index], tree);
 
 
     if(tokens[index].type == (int)TokenTypes::CONSTRUCT && tokens[index].subType == (int)Constructs::SWITCH) {
@@ -1132,7 +1148,7 @@ static bool isSwitchStatement(Token* tokens, uint32_t& index, GrammarTree* tree)
 
 static bool isReturn(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(RETURN_STATEMENT, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(RETURN_STATEMENT, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::CONSTRUCT && tokens[index].subType == (int)Constructs::RETURN) {
         addTerminalToTree(tokens, index, newNode);
@@ -1148,7 +1164,7 @@ static bool isReturn(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isStatement(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(STATEMENT, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(STATEMENT, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::EOL) {
         addTerminalToTree(tokens, index, newNode);
@@ -1174,7 +1190,7 @@ static bool isStatement(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isStatementList(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(STATEMENT_LIST, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(STATEMENT_LIST, &tokens[index], tree);
 
     if(isStatement(tokens, index, newNode)) {
         isStatementList(tokens, index, newNode);
@@ -1186,7 +1202,7 @@ static bool isStatementList(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isStructureStatement(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(STATEMENT, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(STATEMENT, &tokens[index], tree);
 
     //a structure statement is either a declaration
     if(isStructure(tokens, index, newNode) || isFunction(tokens, index, newNode)) {
@@ -1207,7 +1223,7 @@ static bool isStructureStatement(Token* tokens, uint32_t& index, GrammarTree* tr
 
 static bool isStructureStatementList(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(STATEMENT_LIST, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(STATEMENT_LIST, &tokens[index], tree);
 
     if(isStructureStatement(tokens, index, newNode)) {
         isStructureStatementList(tokens, index, newNode);
@@ -1219,7 +1235,7 @@ static bool isStructureStatementList(Token* tokens, uint32_t& index, GrammarTree
 
 static bool isStructureDefinition(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(STRUCT, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(STRUCT, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::IDENTIFIER) {
         addTerminalToTree(tokens, index, newNode);
@@ -1241,7 +1257,7 @@ static bool isStructureDefinition(Token* tokens, uint32_t& index, GrammarTree* t
 
 static bool isStruct(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(STRUCT, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(STRUCT, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::CONSTRUCT && tokens[index].subType == (int)Constructs::STRUCT) {
         addTerminalToTree(tokens, index, newNode);
@@ -1258,7 +1274,7 @@ static bool isStruct(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isClass(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(CLASS, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(CLASS, &tokens[index], tree);
 
     if(tokens[index].type == (int)TokenTypes::CONSTRUCT && tokens[index].subType == (int)Constructs::CLASS) {
         addTerminalToTree(tokens, index, newNode);
@@ -1275,7 +1291,7 @@ static bool isClass(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isStructure(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(STRUCTURE, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(STRUCTURE, &tokens[index], tree);
 
     if(isClass(tokens, index, newNode) || isStruct(tokens, index, newNode)) {
         tree->addSubNode(newNode);
@@ -1289,7 +1305,7 @@ static bool isStructure(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isGlobal(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(GLOBAL, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(GLOBAL, &tokens[index], tree);
 
     //a global is either a declaration
     if(isStructure(tokens, index, newNode) || isFunction(tokens, index, newNode)) {
@@ -1310,7 +1326,7 @@ static bool isGlobal(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isGlobalList(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(GLOBAL_LIST, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(GLOBAL_LIST, &tokens[index], tree);
     
     //a global list is a global or end of file
     if(isGlobal(tokens, index, newNode)) {
@@ -1330,7 +1346,7 @@ static bool isGlobalList(Token* tokens, uint32_t& index, GrammarTree* tree) {
 
 static bool isValidFile(Token* tokens, uint32_t& index, GrammarTree* tree) {
     uint32_t temp = index;
-    GrammarTree* newNode = new GrammarTree(LANGUAGE_FILE, &tokens[index]);
+    GrammarTree* newNode = new GrammarTree(LANGUAGE_FILE, &tokens[index], tree);
 
     //its valid if it has a list of globals
     if(isGlobalList(tokens, index, newNode) || isEOF(tokens, index, newNode)) {
@@ -1375,7 +1391,7 @@ int compileFile(const std::string& inputFile, const std::string& outputFile) {
     lFile[fileSize] = 0;
 
     std::ofstream outputStream(outputFile, std::ios::binary);
-    GrammarTree* grammarTree = new GrammarTree(FILE_START, &tokenStream[0]);
+    GrammarTree* grammarTree = new GrammarTree(FILE_START, &tokenStream[0], nullptr);
 
     generateTokenStream(lFile, fileSize, tokenStream);
     generateParseTree(tokenStream, grammarTree);

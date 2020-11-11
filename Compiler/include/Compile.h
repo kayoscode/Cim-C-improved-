@@ -27,20 +27,26 @@ enum GrammarNodeName {
 };
 
 const char* grammarNodeNames[];
+struct GrammarTree;
 
 struct Type {
     Type() :size(1) {}
     Type(uint32_t size) :size(size) {}
     uint32_t size;
-    //include things like a memory layout
-    //include metadata like member names, method sizes, etc
+    GrammarTree* type = nullptr;
+};
+
+struct Identifier {
+    Type type;
+    GrammarTree* idt = nullptr;
 };
 
 struct GrammarTree{
-    GrammarTree(int nodeType, Token* nodeStart)
+    GrammarTree(int nodeType, Token* nodeStart, GrammarTree* parent)
         :nodeType(nodeType),
         nodeStart(nodeStart),
         nodeEnd(nodeStart),
+        parent(parent),
         tmp(0)
     {}
 
@@ -55,7 +61,6 @@ struct GrammarTree{
     }
 
     inline void addSubNode(GrammarTree* subNode) {
-        subNode->parent = this;
         subNodes.push_back(subNode);
         nodeEnd = subNode->nodeEnd;
     }
@@ -69,14 +74,64 @@ struct GrammarTree{
         *nodeEnd->end = tmp;
     }
 
-    inline void addType(const char* typeName, Type type) {
-        localTypes.emplace(typeName, type);
+    inline void addType(Token* name, Type type) {
+        char tmp = *name->end;
+        *name->end = 0;
+        localTypes.emplace(name->start, type);
+        *name->end = tmp;
     }
 
-    void getType(const char* name, Type& type) {
+    void addIdentifier(Token* name, Identifier type) {
+        if(parent != nullptr && (nodeType != STATEMENT_LIST && nodeType != GLOBAL_LIST)) {
+            parent->addIdentifier(name, type);
+        }
+        else {
+            char tmp = *name->end;
+            *name->end = 0;
+            localIdentifiers.emplace(name->start, type);
+            *name->end = tmp;
+        }
     }
 
-    void getIdentifier(const char* identifier, int& idt) {
+    //for adding functions to the global scope of the function
+    void addScopeIdentifier(Token* name, Identifier type) {
+        if(parent != nullptr && parent->nodeType != STATEMENT_LIST && parent->nodeType != GLOBAL_LIST) {
+            parent->addScopeIdentifier(name, type);
+        }
+        else {
+            char tmp = *name->end;
+            *name->end = 0;
+            localIdentifiers.emplace(name->start, type);
+            *name->end = tmp;
+        }
+    }
+
+    bool getIdentifier(Token* name, Identifier& ret) {
+        return true;
+    }
+
+    GrammarTree* getType(Token* name, Type& type) {
+        char tmp = *name->end;
+        *name->end = 0;
+
+        if(localTypes.find(name->start) != localTypes.end()) {
+            *name->end = tmp;
+            return this;
+        }
+        else if(GrammarTree* ret = parent->getType(name, type)) {
+            *name->end = tmp;
+            return ret;
+        }
+
+        *name->end = tmp;
+        return nullptr;
+    }
+
+    GrammarTree* getIdentifier(Token* name, int& idt, bool defaultCheck = true) {
+        char tmp = *name->end;
+        *name->end = 0;
+        *name->end = tmp;
+        return nullptr;
     }
 
     void printText();
@@ -88,9 +143,11 @@ struct GrammarTree{
     char tmp;
 
     std::map<std::string, Type> localTypes;
-    std::map<std::string, int> localIdentifiers;
-    std::map<std::string, GrammarTree*> identifierParent;
-    std::map<std::string, GrammarTree*> typeParent;
+    std::map<std::string, Identifier> localIdentifiers;
+
+    //stores the parent in which the type was defined for log(n) access next time its searched for from a child node
+    //std::map<std::string, GrammarTree*> identifierParent;
+    //std::map<std::string, GrammarTree*> typeParent;
 
     GrammarTree* parent = nullptr;
     std::vector<GrammarTree*> subNodes;

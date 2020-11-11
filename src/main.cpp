@@ -2,8 +2,8 @@
 
 //1 GB of memory
 #define MEMORY_SIZE 1073741824 / 32
-
 #include "Cpu.h"
+#include <bitset>
 
 int main() {
     LINIT();
