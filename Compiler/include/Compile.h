@@ -81,17 +81,31 @@ struct GrammarTree{
         *name->end = tmp;
     }
 
-    void addIdentifier(Token* name, Identifier type) {
+    void addIdentifier(Token* name, Identifier idt) {
         if(parent != nullptr && (nodeType != STATEMENT_LIST && nodeType != GLOBAL_LIST)) {
-            parent->addIdentifier(name, type);
+            parent->addIdentifier(name, idt);
         }
         else {
             char tmp = *name->end;
             *name->end = 0;
-            localIdentifiers.emplace(name->start, type);
+            localIdentifiers.emplace(name->start, idt);
             *name->end = tmp;
         }
     }
+
+    /**
+    void addOperandIdentifier(Token* name, Identifier idt) {
+        if(parent != nullptr && (nodeType != FUNCTION)) {
+            parent->addOperandIdentifier(name, idt);
+        }
+        else {
+            char tmp = *name->end;
+            *name->end = 0;
+            localIdentifiers.emplace(name->start, idt);
+            *name->end = tmp;
+        }
+    }
+    */
 
     //for adding functions to the global scope of the function
     void addScopeIdentifier(Token* name, Identifier type) {
@@ -155,5 +169,6 @@ struct GrammarTree{
 
 int compileFile(const std::string& inputFile, const std::string& outputFile);
 bool sequals(const char* a, const char* b, uint32_t count);
+void printToken(Token& token);
 
 #endif

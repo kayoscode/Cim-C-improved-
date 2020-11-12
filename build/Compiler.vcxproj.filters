@@ -7,6 +7,9 @@
     <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\src\Compile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\src\Semantics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\src\defs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -22,6 +25,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\include\Compile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\include\Semantics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\Bryce\Documents\Cim-C-improved-\Compiler\include\defs.h">

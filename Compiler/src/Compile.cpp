@@ -1,4 +1,5 @@
 #include "Compile.h"
+#include "Semantics.h"
 
 /**
  * TODO: 
@@ -796,6 +797,9 @@ static bool isFunctionOperand(Token* tokens, uint32_t& index, GrammarTree* tree)
 
     if(isType(tokens, index, newNode)) {
         if(tokens[index].type == (int)TokenTypes::IDENTIFIER) {
+            Identifier idt;
+            idt.idt = newNode;
+            tree->addIdentifier(&tokens[index], idt);
             addTerminalToTree(tokens, index, newNode);
             tree->addSubNode(newNode);
             return true;
@@ -1312,7 +1316,8 @@ static bool isGlobal(Token* tokens, uint32_t& index, GrammarTree* tree) {
         tree->addSubNode(newNode);
         return true;
     }
-    else if((isFunctionDeclaration(tokens, index, newNode) || isInitialization(tokens, index, newNode) || isDeclaration(tokens, index, newNode) || isTypedef(tokens, index, newNode)) && 
+    else if((isFunctionDeclaration(tokens, index, newNode) || isInitialization(tokens, index, newNode) || 
+                isDeclaration(tokens, index, newNode) || isTypedef(tokens, index, newNode)) && 
             tokens[index].type == (int)TokenTypes::PUNCTUATOR && tokens[index].subType == (int)Punctuators::EOL) {
         addTerminalToTree(tokens, index, newNode);
         tree->addSubNode(newNode);
@@ -1395,7 +1400,13 @@ int compileFile(const std::string& inputFile, const std::string& outputFile) {
 
     generateTokenStream(lFile, fileSize, tokenStream);
     generateParseTree(tokenStream, grammarTree);
-    grammarTree->print();
+
+    if(!semanticsPass(grammarTree)) {
+        std::cout << "semantics failed\n";
+    }
+    else {
+        std::cout << "semantics succeeded\n";
+    }
 
     outputStream.close();
     delete[] lFile;
